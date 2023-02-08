@@ -5,7 +5,6 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton,
     Button,
     Text,
     useDisclosure,
@@ -18,9 +17,9 @@ import {
   import scorpion from '../img/scorpion.png';
 
 function StartModal(props) {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const startGame = () => {
-        props.setGameState('active');
+        props.handleStart();
     };
 
     return (

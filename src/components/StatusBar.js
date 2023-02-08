@@ -1,4 +1,5 @@
-import { Flex, Image, Box } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { Flex, Image, Box, Text } from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
 import reptile from '../img/reptile.png';
 import kollector from '../img/kollector.png';
@@ -6,9 +7,32 @@ import torr from '../img/torr.png';
 import scorpion from '../img/scorpion.png';
 
 const StatusBar = (props) => {
+    const [localTimer, setLocalTimer] = useState(0);
+
+    useEffect(() => {
+        if(props.gameState === 'active'){
+            const interval = setInterval(() => {
+                setLocalTimer(() => localTimer + .1)
+            }, 100);
+    
+            return () => {
+                console.log(`clearing interval`);
+                clearInterval(interval);
+              };
+        }
+    }, [localTimer, props]);
+
+    useEffect(() => {
+        if(props.gameState === 'gameover') {
+            props.setTimer(localTimer);
+        }
+    }, [props, localTimer]);
 
     return (
         <Flex position='fixed' bottom='4px' right='4px' zIndex='2' gap='.5rem' bgColor='gray.800' padding='.5rem' borderRadius='.5rem' boxShadow='base' >
+            <Flex alignItems='center' width='6rem' marginLeft='.5rem' >
+                <Text color='green.500' fontWeight='bold' fontSize='2rem'>{localTimer.toFixed(1)}</Text>
+            </Flex>
             <Box position='relative'>
                 <Image
                     boxSize='3.5rem'

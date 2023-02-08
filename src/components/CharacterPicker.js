@@ -12,7 +12,7 @@ import {
 const CharacterPicker = (props) => {
     const handleChange = (name) => {
         props.setCharSelect(false);
-        props.checkLoc(name, props.coords)
+        props.checkLoc(name, props.coords);
     }
 
     return (
