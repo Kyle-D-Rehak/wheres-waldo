@@ -17,7 +17,7 @@ const CharacterPicker = (props) => {
 
     return (
         <Menu defaultIsOpen closeOnBlur={false} closeOnSelect={false} >
-            <MenuList position='absolute' zIndex='2' top={props.coords.y} left={props.coords.x}>
+            <MenuList position='absolute' zIndex='5' top={props.coords.y} left={props.coords.x} >
                 <MenuItem minH='40px' onClick={() => handleChange('scorpion')}>
                 <Image
                     boxSize='3.5rem'

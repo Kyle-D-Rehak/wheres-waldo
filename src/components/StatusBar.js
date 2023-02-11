@@ -24,7 +24,7 @@ const StatusBar = (props) => {
 
     useEffect(() => {
         if(props.gameState === 'setup') {
-            props.setTimer(0);
+            setLocalTimer(0);
         }
     }, [props]);
 

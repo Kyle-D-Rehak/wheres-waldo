@@ -6,6 +6,7 @@ import StatusBar from './components/StatusBar';
 import GameOverModal from './components/GameOverModal';
 import gameImage from './img/gameImage.jpg';
 import CharacterPicker from './components/CharacterPicker';
+import Leaderboard from './components/Leaderboard';
 import firebase from './firebase';
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
   const [timer, setTimer] = useState(0);
   let locdat = { scorpion: {}, reptile: {}, torr: {}, kollector: {}};
 
+  const db = firebase.firestore();
   const locRef = firebase.firestore().collection('locCheck');
+
 
   locRef.doc('reptile').get().then((doc) => {
     locdat.reptile = doc.data();
@@ -86,7 +89,8 @@ function App() {
       {gameState === 'setup' && <StartModal handleStart={handleStart} />}
       {charSelect && <CharacterPicker setCharSelect={setCharSelect} coords={coords} checkLoc={checkLoc} />}
       <StatusBar found={found} setTimer={setTimer} gameState={gameState} />
-      {gameState === 'gameover' && <GameOverModal reset={reset} timer={timer} />}
+      {gameState === 'gameover' && <GameOverModal db={db} reset={reset} timer={timer} setGameState={setGameState}/>}
+      {gameState === 'leaderboard' && <Leaderboard db={db} reset={reset} />}
     </div>
     </ChakraProvider>
   );
