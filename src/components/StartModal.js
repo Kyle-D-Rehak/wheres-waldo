@@ -24,17 +24,17 @@ function StartModal(props) {
 
     return (
         <>
-        <Modal size='xl' isOpen='isOpen' onClose={onClose} isCentered>
+        <Modal size='xl' isOpen='isOpen' onClose={onClose} isCentered >
           <ModalOverlay bg='blackAlpha.600' backdropFilter='auto' backdropBlur='8px'/>  
           <ModalContent>
             <ModalHeader>Where's Scorpion?</ModalHeader>
             <ModalBody>
               <Text>Find all 4 characters as fast as possible </Text>
-              <Flex>
-              <Image src={scorpion} alt='' />
-              <Image src={torr} alt='' />
-              <Image src={kollector} alt='' />
-              <Image src={reptile} alt='' />
+              <Flex alignItems='stretch'>
+              <Image objectFit='contain'  flexShrink='1' height='200px' width='100%' src={scorpion} alt='' />
+              <Image objectFit='contain'  flexShrink='1' height='200px' width='100%' src={kollector} alt='' />
+              <Image objectFit='contain'  flexShrink='1' height='200px' width='100%' src={reptile} alt='' />
+              <Image objectFit='contain'  flexShrink='1' height='200px' width='100%' src={torr} alt='' />
               </Flex>
             </ModalBody>
             <ModalFooter>
