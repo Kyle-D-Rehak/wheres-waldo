@@ -25,10 +25,16 @@ const GameOverModal = (props) => {
           <ModalContent>
             <ModalHeader>Game over!</ModalHeader>
             <ModalBody>
-              <Text>Your time was {props.timer.toFixed(1)} </Text>
+              <Text>Your time was {props.timer.toFixed(1)} seconds</Text>
             </ModalBody>
             <ModalFooter>
-              <Button onClick={submitScore}>Submit Score</Button>
+              <Flex gap='1rem'>
+                <Button onClick={props.reset}>Reset</Button>
+                <Button onClick={submitScore}>Submit Score</Button>
+
+              </Flex>
+
+
             </ModalFooter>
           </ModalContent>
         </Modal>

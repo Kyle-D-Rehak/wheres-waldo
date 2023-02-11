@@ -19,8 +19,14 @@ const StatusBar = (props) => {
                 console.log(`clearing interval`);
                 clearInterval(interval);
               };
-        }
+        } 
     }, [localTimer, props]);
+
+    useEffect(() => {
+        if(props.gameState === 'setup') {
+            props.setTimer(0);
+        }
+    }, [props]);
 
     useEffect(() => {
         if(props.gameState === 'gameover') {

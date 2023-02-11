@@ -73,6 +73,12 @@ function App() {
     } else return false;
   }
 
+  const reset = () => {
+    setFound({scorpion: false, reptile: false, torr: false, kollector: false});
+    setTimer(0);
+    setGameState('setup');
+  }
+
   return (
     <ChakraProvider>
     <div className="App" position='relative'>
@@ -80,7 +86,7 @@ function App() {
       {gameState === 'setup' && <StartModal handleStart={handleStart} />}
       {charSelect && <CharacterPicker setCharSelect={setCharSelect} coords={coords} checkLoc={checkLoc} />}
       <StatusBar found={found} setTimer={setTimer} gameState={gameState} />
-      {gameState === 'gameover' && <GameOverModal timer={timer} />}
+      {gameState === 'gameover' && <GameOverModal reset={reset} timer={timer} />}
     </div>
     </ChakraProvider>
   );
